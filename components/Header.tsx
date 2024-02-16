@@ -57,9 +57,9 @@ const Header = () => {
             <div
                 className={css({
                     width: '100%',
-                    paddingLeft: { base: '8px', bigTablet: '44px' },
-                    paddingTop: { base: '8px', bigTablet: '20px' },
-                    paddingBottom: { base: '0px', bigTablet: '12px' },
+                    paddingLeft: { base: '8px', tablet: '44px' },
+                    paddingTop: { base: '8px', tablet: '20px' },
+                    paddingBottom: { base: '0px', tablet: '12px' },
                     textStyle: 'caption2',
                     color: 'base.contrastLight',
                     opacity: 0.3,
@@ -82,8 +82,16 @@ const Header = () => {
                 className={css({
                     display: 'flex',
                     width: '100%',
-                    justifyContent: 'space-around',
-                    layerStyle: 'container',
+                    justifyContent: {
+                        base: 'space-around',
+                        bigTablet: 'flex-start',
+                    },
+                    padding: {
+                        base: '0 0px',
+                        tablet: '0 84px',
+                        bigTablet: '0 104px',
+                        desktop: '0 186px',
+                    },
                     '& > *': {
                         marginRight: { base: '0px', bigTablet: '48px' },
                     },
@@ -94,17 +102,23 @@ const Header = () => {
                         hideBelow: 'bigTablet',
                     })}
                 >
-                    <HeaderLink href="/core">
+                    <HeaderLink href="/">
                         <NrkLogoNrkRadio
                             className={css({ height: '48px', width: 'auto' })}
                         />
                     </HeaderLink>
                 </div>
-                <HeaderLink href="/">
-                    <NrkHome />
-                    Forsiden
-                </HeaderLink>
-                <HeaderLink href="/utforsk">
+                <div
+                    className={css({
+                        hideFrom: 'bigTablet',
+                    })}
+                >
+                    <HeaderLink href="/">
+                        <NrkHome />
+                        Forsiden
+                    </HeaderLink>
+                </div>
+                <HeaderLink href="/sok">
                     <NrkSearch />
                     Utforsk
                 </HeaderLink>
